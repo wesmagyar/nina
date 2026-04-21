@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  nina-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../nina:/app/nina
+      - ../build:/app/build
+      - ../dist:/app/dist
+    working_dir: /app
+    tty: true
+    stdin_open: true
+    privileged: true  # Needed for some USB/INDI operations
+
+  nina-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../nina:/app/nina
+      - ../test-results:/app/test-results
+    working_dir: /app
+    command: ./scripts/test.sh
+    depends_on:
+      - nina-build
+
+  nina-package:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../nina:/app/nina
+      - ../dist:/app/dist
+    working_dir: /app
+    command: ./packaging/create-package.sh
+    depends_on:
+      - nina-build
