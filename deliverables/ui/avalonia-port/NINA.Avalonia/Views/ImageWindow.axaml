@@ -1,0 +1,129 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NINA.Avalonia.Views"
+             x:Class="NINA.Avalonia.Views.ImageWindow"
+             Name="PART_ImageView">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40" />
+        <ColumnDefinition Width="40" />
+        <ColumnDefinition Width="40" />
+        <ColumnDefinition Width="40" />
+        <ColumnDefinition Width="50" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="0"
+              Margin="2.5"
+              Click="ButtonZoomIn_Click">
+        <Button.Tooltip>
+          <ToolTip>
+            <TextBlock Text="Zoom In" />
+          </ToolTip>
+        </Button.Tooltip>
+        <Grid>
+          <PathIcon Margin="5"
+                    Data="{StaticResource ZoomIn}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    />
+        </Grid>
+      </Button>
+      <Button Grid.Column="1"
+              Margin="2.5"
+              Click="ButtonZoomOut_Click">
+        <Button.Tooltip>
+          <ToolTip>
+            <TextBlock Text="Zoom Out" />
+          </ToolTip>
+        </Button.Tooltip>
+        <Grid>
+          <PathIcon Margin="5"
+                    Data="{StaticResource ZoomOut}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    />
+        </Grid>
+      </Button>
+      <Button Grid.Column="2"
+              Margin="2.5"
+              Click="ButtonZoomReset_Click">
+        <Button.Tooltip>
+          <ToolTip>
+            <TextBlock Text="Zoom Stretch" />
+          </ToolTip>
+        </Button.Tooltip>
+        <Grid>
+          <PathIcon Margin="5"
+                    Data="{StaticResource Stretch}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    />
+        </Grid>
+      </Button>
+      <Button Grid.Column="3"
+              Margin="2.5"
+              Click="ButtonZoomOneToOne_Click">
+        <Button.Tooltip>
+          <ToolTip>
+            <TextBlock Text="One To One" />
+          </ToolTip>
+        </Button.Tooltip>
+        <TextBlock Foreground="{StaticResource ButtonForegroundBrush}" Text="1:1" />
+      </Button>
+
+      <TextBlock Name="PART_TextblockScale"
+                 Grid.Column="4"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center" />
+
+      <ContentPresenter Grid.Column="6" Content="{Binding ButtonHeaderContent, ElementName=PART_ImageView}" />
+    </Grid>
+
+    <ScrollViewer Name="PART_ScrollViewer"
+                  Grid.Row="1"
+                  PanningMode="Both">
+      <Grid>
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <RotateTransform Angle="{Binding ImageRotation, ElementName=PART_ImageView}" />
+            <ScaleTransform ScaleX="{Binding ImageFlip, ElementName=PART_ImageView}" />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <PathIcon Width="100"
+                Height="100"
+                Margin="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Data="{StaticResource PictureSVG}"
+                Foreground="{StaticResource ButtonForegroundDisabledBrush}"
+                Opacity="0.4"
+                />
+        <Viewbox Stretch="Uniform">
+          <Canvas Name="PART_Canvas"
+                  Width="{Binding ActualWidth, ElementName=PART_Image}"
+                  Height="{Binding ActualHeight, ElementName=PART_Image}"
+                  ClipToBounds="True"
+                  SizeChanged="PART_Canvas_SizeChanged">
+            <Canvas.Background>
+              <VisualBrush>
+                <VisualBrush.Visual>
+                  <Image Name="PART_Image"
+                         RenderOptions.BitmapScalingMode="HighQuality"
+                         Source="{Binding Image, ElementName=PART_ImageView}"
+                         Stretch="Uniform" />
+                </VisualBrush.Visual>
+              </VisualBrush>
+            </Canvas.Background>
+            <ContentPresenter Name="PART_ImageViewContent" Content="{Binding ImageAreaContent, ElementName=PART_ImageView}" />
+            <Canvas.LayoutTransform>
+              <ScaleTransform Name="PART_ScaleTransform" />
+            </Canvas.LayoutTransform>
+          </Canvas>
+        </Viewbox>
+      </Grid>
+    </ScrollViewer>
+  </Grid>
+</UserControl>
