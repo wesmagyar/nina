@@ -7,7 +7,8 @@
         x:Class="NINA.Avalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="NINA.Avalonia">
+        Title="NINA.Avalonia"
+        Background="{DynamicResource BackgroundBrush}">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,6 +16,21 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="{Binding Greeting}" 
+                   Foreground="{DynamicResource PrimaryBrush}" 
+                   FontSize="24" 
+                   Margin="0,0,0,20"/>
+        
+        <Button Content="Test Button" 
+                Background="{DynamicResource ButtonBackgroundBrush}"
+                Foreground="{DynamicResource ButtonForegroundBrush}"
+                Padding="20,10"
+                Margin="0,0,0,10"/>
+                
+        <Button Content="Secondary Button" 
+                Classes="SecondaryBackgroundButton"
+                Padding="20,10"/>
+    </StackPanel>
 
 </Window>

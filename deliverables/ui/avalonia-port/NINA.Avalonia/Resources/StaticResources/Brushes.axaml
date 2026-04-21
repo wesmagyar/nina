@@ -1,9 +1,4 @@
-<!-- This is the Avalonia port of Brushes.xaml -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <!-- Note: These brushes will need to be adapted to work with Avalonia's binding system -->
-    <!-- For now, we'll use static colors as placeholders -->
-
     <SolidColorBrush x:Key="PrimaryBrush" Color="#FF4A90E2"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="#FF7DB6EA"/>
     <SolidColorBrush x:Key="BorderBrush" Color="#FF333333"/>
@@ -20,8 +15,6 @@
     <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="#FF252526"/>
     <SolidColorBrush x:Key="TertiaryBackgroundBrush" Color="#FF2D2D30"/>
     <SolidColorBrush x:Key="SequencerExpressionTextBrush" Color="#FF90EE90"/>
-
-    <!-- Alternative color scheme brushes -->
     <SolidColorBrush x:Key="AltPrimaryBrush" Color="#FF5B9BD5"/>
     <SolidColorBrush x:Key="AltSecondaryBrush" Color="#FF86C1E0"/>
     <SolidColorBrush x:Key="AltBorderBrush" Color="#FF444444"/>

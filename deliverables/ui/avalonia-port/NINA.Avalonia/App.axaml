@@ -3,7 +3,6 @@
              x:Class="NINA.Avalonia.App"
              xmlns:local="using:NINA.Avalonia"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
         <local:ViewLocator/>
@@ -12,4 +11,39 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+    
+    <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#FF4A90E2"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="#FF7DB6EA"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#FF2D2D30"/>
+        <SolidColorBrush x:Key="ButtonBackgroundSelectedBrush" Color="#FF3E3E42"/>
+        <SolidColorBrush x:Key="ButtonForegroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="ButtonForegroundDisabledBrush" Color="#FF666666"/>
+        <SolidColorBrush x:Key="CrosshairBrush" Color="#FFFF0000"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#FF1E1E1E"/>
+        <SolidColorBrush x:Key="NotificationWarningBrush" Color="#FFF5A623"/>
+        <SolidColorBrush x:Key="NotificationErrorBrush" Color="#FFD0021B"/>
+        <SolidColorBrush x:Key="NotificationWarningTextBrush" Color="#FF000000"/>
+        <SolidColorBrush x:Key="NotificationErrorTextBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="#FF252526"/>
+        <SolidColorBrush x:Key="TertiaryBackgroundBrush" Color="#FF2D2D30"/>
+        <SolidColorBrush x:Key="SequencerExpressionTextBrush" Color="#FF90EE90"/>
+        <SolidColorBrush x:Key="AltPrimaryBrush" Color="#FF5B9BD5"/>
+        <SolidColorBrush x:Key="AltSecondaryBrush" Color="#FF86C1E0"/>
+        <SolidColorBrush x:Key="AltBorderBrush" Color="#FF444444"/>
+        <SolidColorBrush x:Key="AltButtonBackgroundBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="AltButtonBackgroundSelectedBrush" Color="#FF4A4A4A"/>
+        <SolidColorBrush x:Key="AltButtonForegroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="AltButtonForegroundDisabledBrush" Color="#FF888888"/>
+        <SolidColorBrush x:Key="AltCrosshairBrush" Color="#FFFF4444"/>
+        <SolidColorBrush x:Key="AltBackgroundBrush" Color="#FF252525"/>
+        <SolidColorBrush x:Key="AltNotificationWarningBrush" Color="#FFF7B94D"/>
+        <SolidColorBrush x:Key="AltNotificationErrorBrush" Color="#FFE51400"/>
+        <SolidColorBrush x:Key="AltNotificationWarningTextBrush" Color="#FF000000"/>
+        <SolidColorBrush x:Key="AltNotificationErrorTextBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="AltSecondaryBackgroundBrush" Color="#FF2D2D2D"/>
+        <SolidColorBrush x:Key="AltTertiaryBackgroundBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="AltSequencerExpressionTextBrush" Color="#FFB0FFB0"/>
+    </Application.Resources>
 </Application>
