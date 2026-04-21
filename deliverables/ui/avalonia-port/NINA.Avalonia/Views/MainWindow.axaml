@@ -1,63 +1,43 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:NINA.Avalonia.ViewModels"
-        xmlns:views="using:NINA.Avalonia.Views"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NINA.Avalonia.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="NINA.Avalonia"
-        Background="{DynamicResource BackgroundBrush}">
-
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
+        Title="NINA - Nighttime Imaging 'N' Astronomy"
+        Width="1200" Height="800"
+        Background="#1E1E1E">
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
-            <Button Content="Home" 
-                    Margin="0,0,10,0"
-                    Padding="10,5"
-                    Classes="BackgroundButton"/>
-            <Button Content="Camera" 
-                    Click="ShowCameraView"
-                    Padding="10,5"
-                    Classes="BackgroundButton"/>
-            <Button Content="About" 
-                    Click="ShowAboutView"
-                    Padding="10,5"
-                    Classes="BackgroundButton"/>
-            <Button Content="Version Check" 
-                    Click="ShowVersionCheckView"
-                    Padding="10,5"
-                    Classes="BackgroundButton"/>
-        </StackPanel>
+        <Menu DockPanel.Dock="Top" Background="#2D2D30">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New Sequence"/>
+                <MenuItem Header="_Open Sequence"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Equipment">
+                <MenuItem Header="_Camera"/>
+                <MenuItem Header="_Mount"/>
+                <MenuItem Header="_Filter Wheel"/>
+            </MenuItem>
+            <MenuItem Header="_Sequence">
+                <MenuItem Header="_New Sequence"/>
+                <MenuItem Header="_Load Sequence"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About"/>
+            </MenuItem>
+        </Menu>
         
-        <Grid>
-            <views:AboutNINAView x:Name="AboutView" IsVisible="{Binding IsAboutViewVisible}" />
-            <views:Equipment.Camera.CameraView x:Name="CameraView" IsVisible="{Binding IsCameraViewVisible}" />
-            <views:Utilities.VersionCheckView x:Name="VersionCheckView" IsVisible="{Binding IsVersionCheckViewVisible}" />
-            <StackPanel x:Name="HomeView" IsVisible="{Binding IsHomeViewVisible}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="{Binding Greeting}" 
-                           Foreground="{DynamicResource PrimaryBrush}" 
-                           FontSize="24" 
+        <Grid Background="#1E1E1E">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="NINA - Ready for imaging"
+                           FontSize="28"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
                            Margin="0,0,0,20"/>
-                
-                <Button Content="Test Button" 
-                        Background="{DynamicResource ButtonBackgroundBrush}"
-                        Foreground="{DynamicResource ButtonForegroundBrush}"
-                        Padding="20,10"
-                        Margin="0,0,0,10"/>
-                        
-                <Button Content="Secondary Button" 
-                        Classes="SecondaryBackgroundButton"
-                        Padding="20,10"/>
+                <TextBlock Text="Nighttime Imaging 'N' Astronomy"
+                           FontSize="16"
+                           Foreground="#888888"
+                           HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </DockPanel>
-
 </Window>

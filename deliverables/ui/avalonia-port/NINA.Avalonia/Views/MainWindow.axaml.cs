@@ -1,32 +1,15 @@
+using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
-using NINA.Avalonia.ViewModels;
+using Avalonia.Markup.Xaml;
 
-namespace NINA.Avalonia.Views;
+namespace NINA.Avalonia.Views {
+    public partial class MainWindow : Window {
+        public MainWindow() {
+            InitializeComponent();
+        }
 
-public partial class MainWindow : Window
-{
-    private MainWindowViewModel _viewModel;
-    
-    public MainWindow()
-    {
-        InitializeComponent();
-        _viewModel = new MainWindowViewModel();
-        DataContext = _viewModel;
-    }
-    
-    public void ShowCameraView(object sender, RoutedEventArgs e)
-    {
-        _viewModel.ShowCameraView();
-    }
-    
-    public void ShowAboutView(object sender, RoutedEventArgs e)
-    {
-        _viewModel.ShowAboutView();
-    }
-    
-    public void ShowVersionCheckView(object sender, RoutedEventArgs e)
-    {
-        _viewModel.ShowVersionCheckView();
+        private void InitializeComponent() {
+            AvaloniaXamlLoader.Load(this);
+        }
     }
 }

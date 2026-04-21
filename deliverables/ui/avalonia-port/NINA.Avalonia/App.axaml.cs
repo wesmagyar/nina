@@ -1,31 +1,19 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using System.Linq;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using NINA.Avalonia.ViewModels;
-using NINA.Avalonia.Views;
 
-namespace NINA.Avalonia;
-
-public partial class App : Application
-{
-    public override void Initialize()
-    {
-        AvaloniaXamlLoader.Load(this);
-    }
-
-    public override void OnFrameworkInitializationCompleted()
-    {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainWindowViewModel(),
-            };
+namespace NINA.Avalonia {
+    public class App : Application {
+        public override void Initialize() {
+            AvaloniaXamlLoader.Load(this);
         }
 
-        base.OnFrameworkInitializationCompleted();
+        public override void OnFrameworkInitializationCompleted() {
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
+                desktop.MainWindow = new Views.MainWindow();
+            }
+            base.OnFrameworkInitializationCompleted();
+        }
     }
 }
