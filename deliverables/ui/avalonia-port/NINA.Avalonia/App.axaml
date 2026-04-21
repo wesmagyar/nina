@@ -1,10 +1,70 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="NINA.Avalonia.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-
+             x:Class="NINA.Avalonia.App">
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+    
+    <Application.Resources>
+        <!-- Zoom Icons -->
+        <StreamGeometry x:Key="ZoomIn">M19 9h-4V5h-2v4H9v2h4v4h2v-4h4V9zm-8 8c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z</StreamGeometry>
+        
+        <StreamGeometry x:Key="ZoomOut">M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z</StreamGeometry>
+        
+        <StreamGeometry x:Key="Stretch">M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z</StreamGeometry>
+        
+        <StreamGeometry x:Key="PictureSVG">M21,19V5c0-1.1-0.9-2-2-2H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14C20.1,21,21,20.1,21,19z M9.5,13.5c0,0.83-0.67,1.5-1.5,1.5S6.5,14.33,6.5,13.5 S7.17,12,8,12S9.5,12.67,9.5,13.5z M11,6.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S10.17,6.5,11,6.5z M18,15.5 c0,0.83-0.67,1.5-1.5,1.5c-0.83,0-1.5-0.67-1.5-1.5s0.67-1.5,1.5-1.5C17.33,14,18,14.67,18,15.5z M18,9.5c0,0.83-0.67,1.5-1.5,1.5 s-1.5-0.67-1.5-1.5S15.67,8,16.5,8S18,8.67,18,9.5z M11,17.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5 S10.17,17.5,11,17.5z</StreamGeometry>
+        
+        <StreamGeometry x:Key="RotatorSVG">M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z M16.59,7.58L10,14.17l-2.59-2.59L6,13l4,4l5.59-5.59L16.59,7.58z</StreamGeometry>
+        
+        <StreamGeometry x:Key="FlipHorizontalSVG">M19 7h-4V3h-2v4H9l3 3 3-3zM5 17l3-3h4v4h2v-4l3 3V7H5v10z</StreamGeometry>
+        
+        <StreamGeometry x:Key="AberrationInspectorSVG">M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z</StreamGeometry>
+        
+        <StreamGeometry x:Key="CrosshairSVG">M12 10l-2-2-2 2 2 2-2 2 2 2 2-2 2 2 2-2-2-2 2-2-2-2-2 2zm0 2l-2-2-2 2 2 2-2 2 2 2 2-2 2 2 2-2-2-2 2-2-2-2-2 2zm0 2l-2-2-2 2 2 2-2 2 2 2 2-2 2 2 2-2-2-2 2-2-2-2-2 2z</StreamGeometry>
+        
+        <StreamGeometry x:Key="PlatesolveSVG">M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z</StreamGeometry>
+        
+        <StreamGeometry x:Key="WandSVG">M7.5 10c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7s1.5.67 1.5 1.5S8.33 10 7.5 10zm4.5 0c-.83 0-1.5-.67-1.5-1.5S11.17 7 12 7s1.5.67 1.5 1.5S12.83 10 12 10zm4.5 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5S17.33 10 16.5 10z</StreamGeometry>
+        
+        <StreamGeometry x:Key="StarSVG">M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z</StreamGeometry>
+        
+        <StreamGeometry x:Key="BahtinovSVG">M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z</StreamGeometry>
+        
+        <StreamGeometry x:Key="CancelSVG">M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z</StreamGeometry>
+        
+        <!-- Existing brushes -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#FF4A90E2"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="#FF7DB6EA"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#FF2D2D30"/>
+        <SolidColorBrush x:Key="ButtonBackgroundSelectedBrush" Color="#FF3E3E42"/>
+        <SolidColorBrush x:Key="ButtonForegroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="ButtonForegroundDisabledBrush" Color="#FF666666"/>
+        <SolidColorBrush x:Key="CrosshairBrush" Color="#FFFF0000"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#FF1E1E1E"/>
+        <SolidColorBrush x:Key="NotificationWarningBrush" Color="#FFF5A623"/>
+        <SolidColorBrush x:Key="NotificationErrorBrush" Color="#FFD0021B"/>
+        <SolidColorBrush x:Key="NotificationWarningTextBrush" Color="#FF000000"/>
+        <SolidColorBrush x:Key="NotificationErrorTextBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="#FF252526"/>
+        <SolidColorBrush x:Key="TertiaryBackgroundBrush" Color="#FF2D2D30"/>
+        <SolidColorBrush x:Key="SequencerExpressionTextBrush" Color="#FF90EE90"/>
+        <SolidColorBrush x:Key="AltPrimaryBrush" Color="#FF5B9BD5"/>
+        <SolidColorBrush x:Key="AltSecondaryBrush" Color="#FF86C1E0"/>
+        <SolidColorBrush x:Key="AltBorderBrush" Color="#FF444444"/>
+        <SolidColorBrush x:Key="AltButtonBackgroundBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="AltButtonBackgroundSelectedBrush" Color="#FF4A4A4A"/>
+        <SolidColorBrush x:Key="AltButtonForegroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="AltButtonForegroundDisabledBrush" Color="#FF888888"/>
+        <SolidColorBrush x:Key="AltCrosshairBrush" Color="#FFFF4444"/>
+        <SolidColorBrush x:Key="AltBackgroundBrush" Color="#FF252525"/>
+        <SolidColorBrush x:Key="AltNotificationWarningBrush" Color="#FFF7B94D"/>
+        <SolidColorBrush x:Key="AltNotificationErrorBrush" Color="#FFE51400"/>
+        <SolidColorBrush x:Key="AltNotificationWarningTextBrush" Color="#FF000000"/>
+        <SolidColorBrush x:Key="AltNotificationErrorTextBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="AltSecondaryBackgroundBrush" Color="#FF2D2D2D"/>
+        <SolidColorBrush x:Key="AltTertiaryBackgroundBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="AltSequencerExpressionTextBrush" Color="#FFB0FFB0"/>
+    </Application.Resources>
 </Application>
