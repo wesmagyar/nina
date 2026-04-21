@@ -24,4 +24,9 @@ public partial class MainWindow : Window
     {
         _viewModel.ShowAboutView();
     }
+    
+    public void ShowVersionCheckView(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ShowVersionCheckView();
+    }
 }
