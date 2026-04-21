@@ -1,7 +1,7 @@
 # NINA WPF to Avalonia Port - Camera Views Implementation
 
 ## Overview
-This deliverable demonstrates the porting of NINA's camera-related views from WPF to Avalonia for cross-platform compatibility.
+This deliverable demonstrates the porting of NINA's camera-related views from WPF to Avalonia for cross-platform compatibility. Building upon the previously created ImageWindow implementation, this work adds comprehensive camera view functionality.
 
 ## What Was Accomplished
 
@@ -10,11 +10,13 @@ This deliverable demonstrates the porting of NINA's camera-related views from WP
   - Ported from `NINA/View/Equipment/Camera/CameraView.xaml`
   - Maintains visual similarity and functional parity
   - Implements device connector control for management
+  - Includes comprehensive camera settings and temperature controls
 
 - **AnchorableCameraView** - Compact dockable panel version
   - Ported from `NINA/View/Imaging/AnchorableCameraView.xaml`
   - Designed for integration into main imaging interface
   - Shows essential camera status information
+  - Supports both full and compact display modes
 
 ### 2. View Model Architecture
 - **CameraVM** - Main camera view model with state management
@@ -52,6 +54,15 @@ avalonia-port/
 └── NINA.CustomControls.Avalonia/
     └── Controls/Connector.axaml
 ```
+
+### Implemented Features
+- Camera device information display (name, description, driver info, sensor details)
+- Camera settings controls (gain, offset, exposure limits, binning)
+- Temperature control system (cooling/warming with duration settings)
+- Dew heater management
+- Device connection management via Connector control
+- Dockable panel view with compact display option
+- ViewModel architecture with mock data for demonstration
 
 ### Porting Approach
 1. **Syntax Conversion**: Changed `.xaml` to `.axaml` extensions and updated namespaces
@@ -101,3 +112,4 @@ While this demonstration focuses on structure and approach rather than complete 
 5. Add comprehensive error handling and validation
 6. Create unit tests for all view models
 7. Integrate with profile persistence system
+8. Extend to other equipment views (filter wheels, focusers, telescopes, etc.)

@@ -1,0 +1,264 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="NINA.Avalonia.Views.Imaging.AnchorableCameraView">
+  <Grid Grid.IsSharedSizeScope="True">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Grid Margin="5,0,5,0" IsVisible="{Binding SettingsVisible}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <TextBlock VerticalAlignment="Center" Text="Info Only" />
+      <CheckBox
+        Grid.Column="1"
+        Margin="5,0,0,0"
+        HorizontalAlignment="Left"
+        IsChecked="{Binding ActiveProfile.DockPanelSettings.CameraInfoOnly}">
+        <ToolTip.Tip>Information Only Mode</ToolTip.Tip>
+      </CheckBox>
+    </Grid>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+      <Grid Margin="5,0,5,0" IsEnabled="{Binding Cam}">
+        <Grid IsEnabled="{Binding CameraInfo.Connected}">
+          <StackPanel Orientation="Vertical">
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding !CameraInfo.Connected}">
+              <UniformGrid VerticalAlignment="Center" Columns="2">
+                <TextBlock VerticalAlignment="Center" Text="Connected" />
+                <CheckBox
+                  Width="20"
+                  Height="20"
+                  Margin="5,0,0,0"
+                  HorizontalAlignment="Left"
+                  IsChecked="{Binding CameraInfo.Connected}"
+                  IsEnabled="False" />
+              </UniformGrid>
+            </Border>
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.CanGetGain}">
+              <UniformGrid VerticalAlignment="Center" Columns="2">
+                <TextBlock Text="Gain" />
+                <TextBlock Margin="5,0,0,0" Text="{Binding Cam.Gain}" />
+              </UniformGrid>
+            </Border>
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.CanSetOffset}">
+              <UniformGrid VerticalAlignment="Center" Columns="2">
+                <TextBlock Text="Offset" />
+                <TextBlock Margin="5,0,0,0" Text="{Binding Cam.Offset}" />
+              </UniformGrid>
+            </Border>
+
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.HasBattery}">
+              <UniformGrid VerticalAlignment="Center" Columns="2">
+                <TextBlock Text="Camera Battery" />
+                <TextBlock
+                  MinWidth="20"
+                  Margin="5,0,0,0"
+                  Text="{Binding CameraInfo.Battery, StringFormat=\{0:0.00\}%}"
+                  IsVisible="{Binding CameraInfo.Connected}" />
+              </UniformGrid>
+            </Border>
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding CameraInfo.HasDewHeater}">
+              <UniformGrid Columns="2">
+                <TextBlock VerticalAlignment="Center" Text="Dew Heater" />
+                <CheckBox
+                  Width="75"
+                  Height="25"
+                  HorizontalAlignment="Left"
+                  IsChecked="{Binding CameraInfo.DewHeaterOn}"
+                  IsVisible="{Binding !ActiveProfile.DockPanelSettings.CameraInfoOnly}" />
+                <CheckBox
+                  Height="20"
+                  Margin="5,0,0,0"
+                  HorizontalAlignment="Left"
+                  IsChecked="{Binding CameraInfo.DewHeaterOn}"
+                  IsEnabled="false"
+                  IsVisible="{Binding ActiveProfile.DockPanelSettings.CameraInfoOnly}" />
+              </UniformGrid>
+            </Border>
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.CanSetTemperature}">
+              <UniformGrid Columns="2">
+                <TextBlock VerticalAlignment="Center" Text="Cooler On" />
+                <CheckBox
+                  Height="20"
+                  Margin="5,0,0,0"
+                  HorizontalAlignment="Left"
+                  IsChecked="{Binding CameraInfo.CoolerOn}"
+                  IsEnabled="false" />
+              </UniformGrid>
+            </Border>
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.CanSetTemperature}">
+              <UniformGrid VerticalAlignment="Center" Columns="2">
+                <TextBlock Text="Cooler Power" />
+                <TextBlock
+                  Margin="5,0,0,0"
+                  Text="{Binding CameraInfo.CoolerPower, StringFormat=\{0:0.00\}%}"
+                  IsVisible="{Binding CameraInfo.Connected}" />
+              </UniformGrid>
+            </Border>
+            <Border
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0">
+              <UniformGrid VerticalAlignment="Center" Columns="2">
+                <TextBlock Text="Chip Temp" IsVisible="{Binding CameraInfo.Connected}" />
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock
+                    Margin="5,0,0,0"
+                    Text="{Binding CameraInfo.Temperature, StringFormat=\{0:0.00\} °C}"
+                    IsVisible="{Binding CameraInfo.Connected}" />
+                  <TextBlock Text=" / "
+                    IsVisible="{Binding CameraInfo.CoolerOn}" />
+                  <TextBlock MinWidth="20" Text="{Binding Cam.TemperatureSetPoint, StringFormat=\{0:0.00\} °C}"
+                    IsVisible="{Binding CameraInfo.CoolerOn}" />
+                </StackPanel>
+              </UniformGrid>
+            </Border>
+            <Grid IsVisible="{Binding !ActiveProfile.DockPanelSettings.CameraInfoOnly}">
+              <Expander
+                Margin="0,5,0,0"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,1,0,0"
+                Header="Cooling"
+                IsExpanded="False"
+                IsVisible="{Binding Cam.CanSetTemperature}">
+                <Grid VerticalAlignment="Bottom" IsVisible="{Binding Cam.CanSetTemperature}">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="110" />
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                      VerticalAlignment="Center"
+                      Text="Target Temp" />
+                    <NumericUpDown
+                      Grid.Column="1"
+                      MinWidth="120"
+                      IsEnabled="{Binding !TempChangeRunning}"
+                      Maximum="50"
+                      Minimum="-200"
+                      Value="{Binding TargetTemp}" />
+                  </Grid>
+
+                  <Grid Grid.Row="1" Margin="0,2,0,0">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="110" />
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" Text="Min Duration" />
+                    <NumericUpDown
+                      Grid.Column="1"
+                      MinWidth="120"
+                      IsEnabled="{Binding !TempChangeRunning}"
+                      Maximum="30"
+                      Minimum="0"
+                      Value="{Binding CoolingDuration}" />
+                  </Grid>
+
+                  <Button
+                    Grid.Row="2"
+                    Height="25"
+                    Margin="10,10,10,0"
+                    VerticalAlignment="Stretch"
+                    Content="❄️"
+                    Command="{Binding CoolCamCommand}"
+                    IsEnabled="{Binding !WarmCamCommand.IsRunning}"
+                    ToolTip.Tip="Cool Camera" />
+                </Grid>
+              </Expander>
+            </Grid>
+            <Grid IsVisible="{Binding !ActiveProfile.DockPanelSettings.CameraInfoOnly}">
+              <Expander
+                Margin="0,5,0,0"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,1,0,0"
+                Header="Warming"
+                IsExpanded="False"
+                IsVisible="{Binding Cam.CanSetTemperature}">
+                <Grid VerticalAlignment="Bottom">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="110" />
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" Text="Min Duration" />
+                    <NumericUpDown
+                      Grid.Column="1"
+                      MinWidth="120"
+                      IsEnabled="{Binding !TempChangeRunning}"
+                      Maximum="30"
+                      Minimum="0"
+                      Value="{Binding WarmingDuration}" />
+                  </Grid>
+                  <Button
+                    Grid.Row="1"
+                    Height="25"
+                    Margin="10,10,10,0"
+                    HorizontalAlignment="Stretch"
+                    Content="🔥"
+                    Command="{Binding WarmCamCommand}"
+                    IsEnabled="{Binding !CoolCamCommand.IsRunning}"
+                    ToolTip.Tip="Warm Camera" />
+                </Grid>
+              </Expander>
+            </Grid>
+          </StackPanel>
+        </Grid>
+      </Grid>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

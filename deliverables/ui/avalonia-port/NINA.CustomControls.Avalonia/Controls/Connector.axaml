@@ -1,60 +1,58 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="NINA.CustomControls.Avalonia.Controls.Connector">
-    <Grid Name="LayoutRoot" Margin="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        
-        <!-- Device Selection ComboBox -->
-        <ComboBox Grid.Column="0" 
-                  Name="DeviceComboBox"
-                  Items="{Binding Devices}"
-                  SelectedItem="{Binding SelectedDevice}"
-                  IsEnabled="{Binding !SetupDialogOpen}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding DisplayName}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        
-        <!-- Control Buttons -->
-        <StackPanel Grid.Column="1" 
-                    Orientation="Horizontal" 
-                    Margin="5,0,0,0">
-            
-            <!-- Refresh Button -->
-            <Button Name="RefreshButton"
-                    Content="⟳"
-                    Command="{Binding RefreshCommand}"
-                    IsEnabled="{Binding !Connected}"
-                    Margin="0,0,5,0"
-                    Padding="5" />
-            
-            <!-- Setup Button -->
-            <Button Name="SetupButton"
-                    Content="⚙"
-                    Command="{Binding SetupCommand}"
-                    IsEnabled="{Binding HasSetupDialog}"
-                    Margin="0,0,5,0"
-                    Padding="5" />
-            
-            <!-- Connect/Disconnect Button -->
-            <Button Name="ConnectButton"
-                    Content="Connect"
-                    Command="{Binding ConnectCommand}"
-                    IsEnabled="{Binding SelectedDevice, Converter={x:Static BoolToVisibilityConverter}}"
-                    Margin="0,0,5,0"
-                    Padding="10,5" />
-            
-            <!-- Cancel Button -->
-            <Button Name="CancelButton"
-                    Content="✗"
-                    Command="{Binding CancelCommand}"
-                    IsVisible="{Binding Connected}"
-                    Padding="5" />
-        </StackPanel>
-    </Grid>
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:NINA.CustomControls.Avalonia.Controls"
+    x:Class="NINA.CustomControls.Avalonia.Controls.Connector"
+    x:DataType="local:ConnectorVM">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <!-- Device Selection ComboBox -->
+    <ComboBox
+      Grid.Column="0"
+      MinWidth="150"
+      Margin="5"
+      ItemsSource="{CompiledBinding Devices}"
+      SelectedItem="{CompiledBinding SelectedDevice}"
+      IsEnabled="{CompiledBinding !Connected}" />
+
+    <!-- Refresh Button -->
+    <Button
+      Grid.Column="1"
+      Margin="5"
+      Content="🔄"
+      Command="{CompiledBinding RefreshCommand}"
+      ToolTip.Tip="Refresh device list" />
+
+    <!-- Connect/Disconnect Button -->
+    <Button
+      Grid.Column="2"
+      Margin="5"
+      Content="{CompiledBinding ConnectButtonText}"
+      Command="{CompiledBinding ConnectToggleCommand}"
+      ToolTip.Tip="{CompiledBinding ConnectButtonToolTip}" />
+
+    <!-- Setup Button -->
+    <Button
+      Grid.Column="3"
+      Margin="5"
+      Content="⚙️"
+      Command="{CompiledBinding SetupCommand}"
+      IsEnabled="{CompiledBinding HasSetupDialog}"
+      ToolTip.Tip="Device setup" />
+
+    <!-- Connection Status Indicator -->
+    <TextBlock
+      Grid.Column="4"
+      Margin="10,0,0,0"
+      VerticalAlignment="Center"
+      Text="{CompiledBinding ConnectionStatusText}"
+      Foreground="{CompiledBinding ConnectionStatusColor}" />
+  </Grid>
 </UserControl>

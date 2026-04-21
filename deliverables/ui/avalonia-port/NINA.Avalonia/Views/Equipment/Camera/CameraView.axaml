@@ -1,0 +1,492 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:NINA.Avalonia.Views.Equipment.Camera"
+             xmlns:ctrl="clr-namespace:NINA.CustomControls.Avalonia.Controls;assembly=NINA.CustomControls.Avalonia"
+             mc:Ignorable="d"
+             x:Class="NINA.Avalonia.Views.Equipment.Camera.CameraView">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Grid>
+      <GroupBox>
+        <GroupBox.Header>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" MinWidth="140" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+              VerticalAlignment="Center"
+              FontSize="20"
+              Text="Camera" />
+            <ctrl:Connector Grid.Column="1" />
+          </Grid>
+        </GroupBox.Header>
+        <Grid>
+          <StackPanel>
+            <Border
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding CameraInfo.CameraState, Converter={StaticResource CameraStateToVisibilityConverter}}">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Camera State" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding CameraInfo.CameraState}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <Grid Margin="0,6,0,6">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Name" />
+                <TextBlock
+                  Grid.Column="1"
+                  Grid.ColumnSpan="3"
+                  Margin="5,0,0,0"
+                  Text="{Binding Cam.Name}"
+                  TextWrapping="WrapWithOverflow" />
+              </Grid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <Grid Margin="0,6,0,6">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Description" />
+                <TextBlock
+                  Grid.Column="1"
+                  Grid.ColumnSpan="3"
+                  Margin="5,0,0,0"
+                  Text="{Binding Cam.Description}"
+                  TextWrapping="WrapWithOverflow" />
+              </Grid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2"
+                  IsVisible="{Binding Cam.DriverInfo, Converter={StaticResource NullOrEmptyStringToVisibilityCollapsedConverter}}">
+                  <TextBlock Text="Driver Info" />
+                  <TextBlock
+                    Margin="5,0,0,0"
+                    Text="{Binding Cam.DriverInfo}"
+                    TextWrapping="WrapWithOverflow" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2"
+                  IsVisible="{Binding Cam.DriverVersion, Converter={StaticResource NullOrEmptyStringToVisibilityCollapsedConverter}}">
+                  <TextBlock Text="Driver Version" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.DriverVersion}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Sensor Type" />
+                  <TextBlock
+                    Margin="5,0,0,0"
+                    Text="{Binding Cam.SensorType}"
+                    TextWrapping="WrapWithOverflow" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2"
+                  IsVisible="{Binding Cam.SensorName, Converter={StaticResource NullOrEmptyStringToVisibilityCollapsedConverter}}">
+                  <TextBlock Text="Sensor Name" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.SensorName}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Camera X Size" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.CameraXSize}" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Camera Y Size" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.CameraYSize}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Min Exp Time" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.ExposureMin, StringFormat=\{0:0.0######\} s}" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Max Exp Time" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.ExposureMax, StringFormat=\{0:0.0######\} s}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Max Bin X" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.MaxBinX}" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Max Bin Y" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.MaxBinY}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Pixel Size X" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.PixelSizeX, StringFormat=\{0:0.00\} µm}" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Pixel Size Y" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.PixelSizeY, StringFormat=\{0:0.00\} µm}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+            <Border
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.HasBattery}">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Camera Battery" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding CameraInfo.Battery, StringFormat=\{0:0.00\}%}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2"
+                  IsVisible="{Binding Cam.CanGetGain}">
+                  <TextBlock Text="Gain" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.Gain}" />
+                </UniformGrid>
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2"
+                  IsVisible="{Binding Cam.CanSetOffset}">
+                  <TextBlock Text="Offset" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding Cam.Offset}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+          </StackPanel>
+        </Grid>
+      </GroupBox>
+    </Grid>
+
+    <Grid Grid.Row="2" IsEnabled="{Binding Cam}">
+      <GroupBox Grid.Column="1" IsEnabled="{Binding CameraInfo.Connected}">
+        <GroupBox.Header>
+          <Grid Height="40" Margin="5">
+            <TextBlock
+              VerticalAlignment="Center"
+              FontSize="20"
+              Text="Settings" />
+          </Grid>
+        </GroupBox.Header>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+          <StackPanel IsVisible="{Binding Cam}">
+            <DockPanel Margin="0,0,0,6" IsVisible="{Binding Cam.CanGetGain}">
+              <StackPanel MinWidth="100" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="Default Gain" />
+              </StackPanel>
+              <Grid>
+                <NumericUpDown
+                  Width="200"
+                  HorizontalAlignment="Right"
+                  IsEnabled="{Binding Cam.CanSetGain}"
+                  Maximum="{Binding Cam.GainMax}"
+                  Minimum="{Binding Cam.GainMin}"
+                  Value="{Binding DefaultGain}" />
+              </Grid>
+            </DockPanel>
+            <DockPanel Margin="0,0,0,6" IsVisible="{Binding Cam.CanSetOffset}">
+              <StackPanel MinWidth="100" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="Default Offset" />
+              </StackPanel>
+              <NumericUpDown
+                Width="200"
+                HorizontalAlignment="Right"
+                Maximum="{Binding Cam.OffsetMax}"
+                Minimum="{Binding Cam.OffsetMin}"
+                Value="{Binding DefaultOffset}" />
+            </DockPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </GroupBox>
+    </Grid>
+    <Grid
+      Grid.RowSpan="2"
+      Grid.Column="1"
+      IsEnabled="{Binding Cam}">
+      <Grid IsEnabled="{Binding CameraInfo.Connected}">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="2*" />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox>
+          <GroupBox.Header>
+            <Grid Height="40" Margin="5">
+              <TextBlock
+                VerticalAlignment="Center"
+                FontSize="20"
+                Text="Temp Control" />
+            </Grid>
+          </GroupBox.Header>
+
+          <StackPanel Orientation="Vertical">
+            <Border
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding CameraInfo.HasDewHeater}">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock VerticalAlignment="Center" Text="Dew Heater" />
+                  <CheckBox
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Left"
+                    IsChecked="{Binding CameraInfo.DewHeaterOn}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+
+            <Border
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.CanSetTemperature}">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock VerticalAlignment="Center" Text="Cooler On" />
+                  <CheckBox
+                    Height="20"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Left"
+                    IsChecked="{Binding CameraInfo.CoolerOn}"
+                    IsEnabled="false" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+
+            <Border
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding Cam.CanSetTemperature}">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Cooler Power" />
+                  <TextBlock
+                    Margin="5,0,0,0"
+                    Text="{Binding CameraInfo.CoolerPower, StringFormat=\{0:0.00\}%}"
+                    IsVisible="{Binding CameraInfo.Connected}" />
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+
+            <Border
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0"
+              IsVisible="{Binding CameraInfo.Connected}">
+              <UniformGrid Columns="2">
+                <UniformGrid
+                  Margin="0,6,0,6"
+                  VerticalAlignment="Center"
+                  Columns="2">
+                  <TextBlock Text="Chip Temp" />
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                      Margin="5,0,0,0"
+                      Text="{Binding CameraInfo.Temperature, StringFormat=\{0:0.00\} °C}"
+                      IsVisible="{Binding CameraInfo.Connected}" />
+                    <TextBlock Text=" / "
+                      IsVisible="{Binding CameraInfo.CoolerOn}" />
+                    <TextBlock
+                      MinWidth="20"
+                      Margin="5,0,0,0"
+                      Text="{Binding Cam.TemperatureSetPoint, StringFormat=\{0:0.00\} °C}"
+                      IsVisible="{Binding CameraInfo.CoolerOn}" />
+                  </StackPanel>
+                </UniformGrid>
+              </UniformGrid>
+            </Border>
+
+            <Expander
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0,1,0,0"
+              Header="Cooling"
+              IsExpanded="True"
+              IsVisible="{Binding Cam.CanSetTemperature}">
+              <Grid VerticalAlignment="Bottom" IsVisible="{Binding Cam.CanSetTemperature}">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock
+                    VerticalAlignment="Center"
+                    Text="Target Temp" />
+                  <NumericUpDown
+                    Grid.Column="1"
+                    MinWidth="120"
+                    IsEnabled="{Binding !TempChangeRunning}"
+                    Maximum="50"
+                    Minimum="-200"
+                    Value="{Binding TargetTemp}" />
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="0,2,0,0">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock VerticalAlignment="Center" Text="Min Duration" />
+                  <NumericUpDown
+                    Grid.Column="1"
+                    MinWidth="120"
+                    IsEnabled="{Binding !TempChangeRunning}"
+                    Maximum="30"
+                    Minimum="0"
+                    Value="{Binding CoolingDuration}" />
+                </Grid>
+
+                <Button
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Width="40"
+                  Height="40"
+                  VerticalAlignment="Center"
+                  Content="❄️"
+                  Command="{Binding CoolCamCommand}"
+                  IsEnabled="{Binding !WarmCamCommand.IsRunning}"
+                  ToolTip.Tip="Cool Camera" />
+              </Grid>
+            </Expander>
+
+            <Expander
+              Margin="0,5,0,0"
+              BorderBrush="{DynamicResource BorderBrush}"
+              BorderThickness="0,1,0,0"
+              Header="Warming"
+              IsExpanded="True"
+              IsVisible="{Binding Cam.CanSetTemperature}">
+              <Grid VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock VerticalAlignment="Center" Text="Min Duration" />
+                  <NumericUpDown
+                    Grid.Column="1"
+                    MinWidth="120"
+                    IsEnabled="{Binding !TempChangeRunning}"
+                    Maximum="30"
+                    Minimum="0"
+                    Value="{Binding WarmingDuration}" />
+                </Grid>
+                <Button
+                  Grid.Column="1"
+                  Width="40"
+                  Height="40"
+                  VerticalAlignment="Center"
+                  Content="🔥"
+                  Command="{Binding WarmCamCommand}"
+                  IsEnabled="{Binding !CoolCamCommand.IsRunning}"
+                  ToolTip.Tip="Warm Camera" />
+              </Grid>
+            </Expander>
+          </StackPanel>
+        </GroupBox>
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>
