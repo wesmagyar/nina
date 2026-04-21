@@ -2,10 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NINA.Avalonia.Views.ImageWindow">
     <Grid Background="#1E1E1E">
-        <TextBlock Text="Image Window - Placeholder"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="18"
-                   Foreground="White"/>
+        <TextBlock Text="Image Window" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White"/>
     </Grid>
 </UserControl>

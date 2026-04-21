@@ -1,8 +1,0 @@
-<!-- This is the Avalonia port of Converters.xaml -->
-<ResourceDictionary xmlns="https://github.com/avaloniaui" 
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <!-- Avalonia doesn't have the exact same converters as WPF, so we'll define what we need -->
-    <!-- For now, we'll leave this mostly empty and add converters as needed -->
-    
-</ResourceDictionary>

@@ -3,25 +3,13 @@
              x:Class="NINA.Avalonia.Views.AboutNINAView">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
         <StackPanel Margin="5">
-            <TextBlock 
-                Text="N.I.N.A. - Nighttime Imaging 'N' Astronomy" 
-                FontSize="20" 
-                FontWeight="Bold"
-                Margin="0,0,0,10"/>
-            
-            <TextBlock 
-                Text="The astrophotography suite designed for all DSO imagers."
-                Margin="0,0,0,20"/>
-            
-            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto">
-                <TextBlock Text="Version:" Grid.Column="0" Grid.Row="0" Margin="0,5"/>
-                <TextBlock Text="3.3.0.1025" Grid.Column="1" Grid.Row="0" Margin="10,5"/>
-                
-                <TextBlock Text="License:" Grid.Column="0" Grid.Row="1" Margin="0,5"/>
-                <TextBlock Text="Mozilla Public License 2.0" Grid.Column="1" Grid.Row="1" Margin="10,5"/>
-                
-                <TextBlock Text="Website:" Grid.Column="0" Grid.Row="2" Margin="0,5"/>
-                <TextBlock Text="https://nighttime-imaging.com" Grid.Column="1" Grid.Row="2" Margin="10,5"/>
+            <TextBlock Text="N.I.N.A. - Nighttime Imaging 'N' Astronomy" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="The astrophotography suite designed for all DSO imagers." Margin="0,0,0,20"/>
+            <Grid ColumnDefinitions="Auto,*">
+                <TextBlock Text="Version:" Margin="0,5"/>
+                <TextBlock Text="3.3.0.1025" Margin="10,5"/>
+                <TextBlock Text="License:" Grid.Row="1" Margin="0,5"/>
+                <TextBlock Text="Mozilla Public License 2.0" Grid.Row="1" Margin="10,5"/>
             </Grid>
         </StackPanel>
     </ScrollViewer>

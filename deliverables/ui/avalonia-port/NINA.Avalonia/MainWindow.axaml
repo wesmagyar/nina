@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="NINA.Avalonia.Views.MainWindow"
+        x:Class="NINA.Avalonia.MainWindow"
         Title="NINA - Nighttime Imaging 'N' Astronomy"
         Width="1200" Height="800"
         Background="#1E1E1E">
@@ -15,28 +15,18 @@
             <MenuItem Header="_Equipment">
                 <MenuItem Header="_Camera"/>
                 <MenuItem Header="_Mount"/>
-                <MenuItem Header="_Filter Wheel"/>
             </MenuItem>
             <MenuItem Header="_Sequence">
-                <MenuItem Header="_New Sequence"/>
                 <MenuItem Header="_Load Sequence"/>
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem Header="_About"/>
+                <MenuItem Header="_About" Click="ShowAbout"/>
             </MenuItem>
         </Menu>
-        
         <Grid Background="#1E1E1E">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="NINA - Ready for imaging"
-                           FontSize="28"
-                           Foreground="White"
-                           HorizontalAlignment="Center"
-                           Margin="0,0,0,20"/>
-                <TextBlock Text="Nighttime Imaging 'N' Astronomy"
-                           FontSize="16"
-                           Foreground="#888888"
-                           HorizontalAlignment="Center"/>
+                <TextBlock Text="NINA - Ready for imaging" FontSize="28" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Nighttime Imaging 'N' Astronomy" FontSize="16" Foreground="#888" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             </StackPanel>
         </Grid>
     </DockPanel>
