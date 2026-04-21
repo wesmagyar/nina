@@ -1,7 +1,62 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NINA.Avalonia.Views"
              x:Class="NINA.Avalonia.Views.ImageWindow">
-    <Grid Background="#1E1E1E">
-        <TextBlock Text="Image Window" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White"/>
+  <Grid RowDefinitions="40,*">
+    <!-- Toolbar -->
+    <Grid Grid.Row="0" ColumnDefinitions="40,40,40,40,50,*,Auto">
+      <Button Grid.Column="0" Margin="2.5" Name="ZoomInButton">
+        <Panel>
+          <PathIcon Data="{StaticResource ZoomIn}" 
+                    Foreground="{StaticResource ButtonForegroundBrush}" 
+                    Margin="5" />
+        </Panel>
+        <ToolTip.Tip>Zoom In</ToolTip.Tip>
+      </Button>
+      
+      <Button Grid.Column="1" Margin="2.5" Name="ZoomOutButton">
+        <Panel>
+          <PathIcon Data="{StaticResource ZoomOut}" 
+                    Foreground="{StaticResource ButtonForegroundBrush}" 
+                    Margin="5" />
+        </Panel>
+        <ToolTip.Tip>Zoom Out</ToolTip.Tip>
+      </Button>
+      
+      <Button Grid.Column="2" Margin="2.5" Name="ZoomFitButton">
+        <Panel>
+          <PathIcon Data="{StaticResource Stretch}" 
+                    Foreground="{StaticResource ButtonForegroundBrush}" 
+                    Margin="5" />
+        </Panel>
+        <ToolTip.Tip>Fit to Window</ToolTip.Tip>
+      </Button>
+      
+      <Button Grid.Column="3" Margin="2.5" Name="Zoom100Button">
+        <TextBlock Text="1:1" Foreground="{StaticResource ButtonForegroundBrush}" />
+        <ToolTip.Tip>Actual Size</ToolTip.Tip>
+      </Button>
+      
+      <TextBlock Name="ZoomLevelText" 
+                 Grid.Column="4" 
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" 
+                 Text="100%" />
+      
+      <ContentPresenter Grid.Column="6" Name="ButtonHeaderContentPresenter" />
     </Grid>
+    
+    <!-- Image Viewer -->
+    <ScrollViewer Grid.Row="1" 
+                  Name="ImageViewer" 
+                  HorizontalScrollBarVisibility="Auto" 
+                  VerticalScrollBarVisibility="Auto">
+      <Grid>
+        <Image Name="DisplayImage" 
+               Stretch="Uniform" 
+               RenderOptions.BitmapInterpolationMode="HighQuality" />
+        <Canvas Name="OverlayCanvas" />
+      </Grid>
+    </ScrollViewer>
+  </Grid>
 </UserControl>
