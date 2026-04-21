@@ -25,7 +25,5 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.1" />
   </ItemGroup>
   
-  <ItemGroup>
-    <ProjectReference Include="..\NINA.CustomControls.Avalonia\NINA.CustomControls.Avalonia.csproj" />
-  </ItemGroup>
+  
 </Project>
