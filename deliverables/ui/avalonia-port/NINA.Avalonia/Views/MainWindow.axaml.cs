@@ -1,19 +1,27 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using NINA.Avalonia.ViewModels;
 
 namespace NINA.Avalonia.Views;
 
 public partial class MainWindow : Window
 {
+    private MainWindowViewModel _viewModel;
+    
     public MainWindow()
     {
         InitializeComponent();
+        _viewModel = new MainWindowViewModel();
+        DataContext = _viewModel;
+    }
+    
+    public void ShowCameraView(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ShowCameraView();
     }
     
     public void ShowAboutView(object sender, RoutedEventArgs e)
     {
-        // Simple navigation - in a real app you'd use a proper navigation framework
-        HomeView.IsVisible = false;
-        AboutView.IsVisible = true;
+        _viewModel.ShowAboutView();
     }
 }

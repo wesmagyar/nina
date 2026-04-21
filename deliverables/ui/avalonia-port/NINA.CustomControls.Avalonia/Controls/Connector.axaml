@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="NINA.CustomControls.Avalonia.Controls.Connector">
+    <Grid Name="LayoutRoot" Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Device Selection ComboBox -->
+        <ComboBox Grid.Column="0" 
+                  Name="DeviceComboBox"
+                  Items="{Binding Devices}"
+                  SelectedItem="{Binding SelectedDevice}"
+                  IsEnabled="{Binding !SetupDialogOpen}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayName}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <!-- Control Buttons -->
+        <StackPanel Grid.Column="1" 
+                    Orientation="Horizontal" 
+                    Margin="5,0,0,0">
+            
+            <!-- Refresh Button -->
+            <Button Name="RefreshButton"
+                    Content="⟳"
+                    Command="{Binding RefreshCommand}"
+                    IsEnabled="{Binding !Connected}"
+                    Margin="0,0,5,0"
+                    Padding="5" />
+            
+            <!-- Setup Button -->
+            <Button Name="SetupButton"
+                    Content="⚙"
+                    Command="{Binding SetupCommand}"
+                    IsEnabled="{Binding HasSetupDialog}"
+                    Margin="0,0,5,0"
+                    Padding="5" />
+            
+            <!-- Connect/Disconnect Button -->
+            <Button Name="ConnectButton"
+                    Content="Connect"
+                    Command="{Binding ConnectCommand}"
+                    IsEnabled="{Binding SelectedDevice, Converter={x:Static BoolToVisibilityConverter}}"
+                    Margin="0,0,5,0"
+                    Padding="10,5" />
+            
+            <!-- Cancel Button -->
+            <Button Name="CancelButton"
+                    Content="✗"
+                    Command="{Binding CancelCommand}"
+                    IsVisible="{Binding Connected}"
+                    Padding="5" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -18,15 +18,35 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
     
-    public bool IsHomeViewVisible => !_isAboutViewVisible;
+    private bool _isCameraViewVisible = false;
+    public bool IsCameraViewVisible
+    {
+        get => _isCameraViewVisible;
+        set
+        {
+            _isCameraViewVisible = value;
+            OnPropertyChanged(nameof(IsCameraViewVisible));
+            OnPropertyChanged(nameof(IsHomeViewVisible));
+        }
+    }
+    
+    public bool IsHomeViewVisible => !_isAboutViewVisible && !_isCameraViewVisible;
+    
+    public void ShowCameraView()
+    {
+        IsCameraViewVisible = true;
+        IsAboutViewVisible = false;
+    }
     
     public void ShowAboutView()
     {
         IsAboutViewVisible = true;
+        IsCameraViewVisible = false;
     }
     
     public void ShowHomeView()
     {
         IsAboutViewVisible = false;
+        IsCameraViewVisible = false;
     }
 }

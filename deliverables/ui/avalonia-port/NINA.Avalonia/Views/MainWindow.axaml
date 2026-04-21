@@ -23,6 +23,10 @@
                     Margin="0,0,10,0"
                     Padding="10,5"
                     Classes="BackgroundButton"/>
+            <Button Content="Camera" 
+                    Click="ShowCameraView"
+                    Padding="10,5"
+                    Classes="BackgroundButton"/>
             <Button Content="About" 
                     Click="ShowAboutView"
                     Padding="10,5"
@@ -30,8 +34,9 @@
         </StackPanel>
         
         <Grid>
-            <views:AboutNINAView x:Name="AboutView" IsVisible="False" />
-            <StackPanel x:Name="HomeView" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <views:AboutNINAView x:Name="AboutView" IsVisible="{Binding IsAboutViewVisible}" />
+            <views:Equipment.Camera.CameraView x:Name="CameraView" IsVisible="{Binding IsCameraViewVisible}" />
+            <StackPanel x:Name="HomeView" IsVisible="{Binding IsHomeViewVisible}" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="{Binding Greeting}" 
                            Foreground="{DynamicResource PrimaryBrush}" 
                            FontSize="24" 
