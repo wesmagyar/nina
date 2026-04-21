@@ -1,0 +1,20 @@
+<!-- This is the Avalonia port of Converters.xaml -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="using:Avalonia.Controls.Converters">
+
+    <!-- Avalonia built-in converters -->
+    <converters:BoolConverters x:Key="BoolConverters" />
+    
+    <!-- Note: Custom converters will need to be implemented in code -->
+    <!-- For now, we'll include some basic Avalonia converters as examples -->
+    
+    <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
+    <converters:IsNullConverter x:Key="IsNullConverter" />
+    <converters:EqualsConverters x:Key="EqualsConverters" />
+    
+    <!-- Visibility converters for Avalonia -->
+    <converters:IsEqualToBooleanConverter x:Key="IsEqualToBooleanConverter" />
+    
+    <!-- More converters will be added as we port the application -->
+</ResourceDictionary>
