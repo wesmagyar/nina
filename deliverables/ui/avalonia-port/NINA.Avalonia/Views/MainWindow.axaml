@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:NINA.Avalonia.ViewModels"
+        xmlns:views="using:NINA.Avalonia.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -16,21 +17,37 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{Binding Greeting}" 
-                   Foreground="{DynamicResource PrimaryBrush}" 
-                   FontSize="24" 
-                   Margin="0,0,0,20"/>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+            <Button Content="Home" 
+                    Margin="0,0,10,0"
+                    Padding="10,5"
+                    Classes="BackgroundButton"/>
+            <Button Content="About" 
+                    Click="ShowAboutView"
+                    Padding="10,5"
+                    Classes="BackgroundButton"/>
+        </StackPanel>
         
-        <Button Content="Test Button" 
-                Background="{DynamicResource ButtonBackgroundBrush}"
-                Foreground="{DynamicResource ButtonForegroundBrush}"
-                Padding="20,10"
-                Margin="0,0,0,10"/>
+        <Grid>
+            <views:AboutNINAView x:Name="AboutView" IsVisible="False" />
+            <StackPanel x:Name="HomeView" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Greeting}" 
+                           Foreground="{DynamicResource PrimaryBrush}" 
+                           FontSize="24" 
+                           Margin="0,0,0,20"/>
                 
-        <Button Content="Secondary Button" 
-                Classes="SecondaryBackgroundButton"
-                Padding="20,10"/>
-    </StackPanel>
+                <Button Content="Test Button" 
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource ButtonForegroundBrush}"
+                        Padding="20,10"
+                        Margin="0,0,0,10"/>
+                        
+                <Button Content="Secondary Button" 
+                        Classes="SecondaryBackgroundButton"
+                        Padding="20,10"/>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
 
 </Window>
