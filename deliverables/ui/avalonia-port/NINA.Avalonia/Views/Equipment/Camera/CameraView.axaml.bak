@@ -38,14 +38,14 @@
             <Border
               BorderBrush="{DynamicResource BorderBrush}"
               BorderThickness="0"
-              IsVisible="{Binding CameraStateChanged, Converter={StaticResource BoolToVisibilityConverter}}">
+              IsVisible="{Binding CameraInfo.CameraState, Converter={StaticResource CameraStateToVisibilityConverter}}">
               <UniformGrid Columns="2">
                 <UniformGrid
                   Margin="0,6,0,6"
                   VerticalAlignment="Center"
                   Columns="2">
                   <TextBlock Text="Camera State" />
-                  <TextBlock Margin="5,0,0,0" Text="{Binding CameraState}" />
+                  <TextBlock Margin="5,0,0,0" Text="{Binding CameraInfo.CameraState}" />
                 </UniformGrid>
               </UniformGrid>
             </Border>
@@ -62,7 +62,7 @@
                   Grid.Column="1"
                   Grid.ColumnSpan="3"
                   Margin="5,0,0,0"
-                  Text="{Binding Name}"
+                  Text="{Binding Cam.Name}"
                   TextWrapping="WrapWithOverflow" />
               </Grid>
             </Border>
