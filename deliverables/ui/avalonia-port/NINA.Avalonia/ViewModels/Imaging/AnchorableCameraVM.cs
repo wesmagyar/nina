@@ -1,7 +1,23 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows.Input;
 
 namespace NINA.Avalonia.ViewModels.Imaging {
     public partial class AnchorableCameraVM : ObservableObject {
+        // Expose this instance as Cam for backward compatibility with existing XAML
+        public AnchorableCameraVM Cam => this;
+        
+        // Expose this instance as CameraInfo for backward compatibility with existing XAML
+        public AnchorableCameraVM CameraInfo => this;
+        
+        // Command properties for backward compatibility
+        public ICommand CoolCamCommand => new RelayCommand(() => { /* Cooling logic */ });
+        public ICommand WarmCamCommand => new RelayCommand(() => { /* Warming logic */ });
+        
+        // Additional properties referenced in XAML
+        [ObservableProperty]
+        private double battery = 85.5;
+        
         // Mock data for demonstration
         [ObservableProperty]
         private bool settingsVisible = true;

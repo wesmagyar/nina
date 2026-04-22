@@ -79,7 +79,7 @@
                   Grid.Column="1"
                   Grid.ColumnSpan="3"
                   Margin="5,0,0,0"
-                  Text="{Binding Cam.Description}"
+                  Text="{Binding Description}"
                   TextWrapping="WrapWithOverflow" />
               </Grid>
             </Border>

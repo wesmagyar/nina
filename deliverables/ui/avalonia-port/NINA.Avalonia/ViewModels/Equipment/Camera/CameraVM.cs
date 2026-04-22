@@ -1,8 +1,17 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace NINA.Avalonia.ViewModels.Equipment.Camera {
     public partial class CameraVM : ObservableObject {
+        // Expose this instance as Cam for backward compatibility with existing XAML
+        public CameraVM Cam => this;
+        
+        // Command properties for backward compatibility
+        public ICommand CoolCamCommand => new RelayCommand(() => { /* Cooling logic */ });
+        public ICommand WarmCamCommand => new RelayCommand(() => { /* Warming logic */ });
+
         public CameraInfoVM CameraInfo { get; } = new CameraInfoVM();
 
         // Mock data for demonstration
